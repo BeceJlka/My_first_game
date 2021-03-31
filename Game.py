@@ -28,13 +28,17 @@ def human():
         Player.race = "Human"      
 
 class Monster():
-    def __init__(self,level, gold,health, strenght, agility, intelligence):
-    self.level = level
-    self.gold = gold
-    self.health = health
-    self.strenght = strenght
-    self.agility = agility
-    self.intelligence = intelligence
+    def __init__(self,level=randint(Player.level, Player.level+3), gold = randint(1, Player.gold),
+                 health = randint(Player.max_health, Player.heralth+30),
+                 strenght = randint(2, Player.strenght+5), agility = randint(2, Player.agility+5),
+                 intelligence =randint(2, Player.intelligence+5)):
+
+        self.level = level
+        self.gold = gold
+        self.health = health
+        self.strenght = strenght
+        self.agility = agility
+        self.intelligence = intelligence
 
 
 
@@ -59,35 +63,35 @@ palyer = Player()
 monster = Monster()
 game()
 
-def fight(monster,player):
+#def fight(monster,player):
     
 
 def leveling(player_expirience):
     exp_for_new_level = 100
-    if player.expirience >= exp_for_new_level:
+    if Player.expirience >= exp_for_new_level:
         print("You have new level")
-        player.level+=1
-        player.skill_point+=4
-        exp_for_new_level = exp_for_new_level*2
-     else:
-         return
+        Player.level+=1
+        Player.skill_point+=4
+        exp_for_new_level = exp_for_new_level*exp_for_new_level
+    else:
+        return
         
 def uppgrade_stats(player_skill_point):
     print("please choose you skill's\nnow you skill_point = {} write 1 if you whant add 1sp at strenght \n write 2 if you whant add 1sp at intelligence\n"+
-    +"write 3 if you whant add 1sp at agility \n ".format(player.skill_point))
+    +"write 3 if you whant add 1sp at agility \n ".format(Player.skill_point))
     i = int(input())
-    while player.skill_point>0:
+    while Player.skill_point>0:
         if i == 1:
-            player.strenght+=1
-            player.skill_point = player.skill_point-1
+            Player.strenght+=1
+            Player.skill_point = Player.skill_point-1
         elif i == 2:
-            player.intelligence+=1
-            player.skill_point = player.skill_point-1
+            Player.intelligence+=1
+            Player.skill_point = Player.skill_point-1
         elif i == 3:
-            player.agility+=1
-            player.skill_point = player.skill_point-1
+            Player.agility+=1
+            Player.skill_point = Player.skill_point-1
         else:
-            brake
+            break
     
 #def combatpower(strenght,intelligence,agility):
     #for i in player.strenght:
