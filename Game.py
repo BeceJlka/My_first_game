@@ -29,7 +29,7 @@ def human():
 
 class Monster():
     def __init__(self,level=randint(Player.level, Player.level+3), gold = randint(1, Player.gold),
-                 health = randint(Player.max_health, Player.heralth+30),
+                 health = randint(Player.max_health, Player.health+30),
                  strenght = randint(2, Player.strenght+5), agility = randint(2, Player.agility+5),
                  intelligence =randint(2, Player.intelligence+5)):
 
@@ -49,9 +49,9 @@ def game():
     print("~~~~~~~~~~~~~~~")
     print("Hi {}!".format(Player.name))
     print("Chose you race:")
-    print("Human : give you more helth and power")
+    print("Human : give you more health and power")
     print("Elf : give you more agility and intelligence")
-    print("write your anser(only one of race)")
+    print("write your answer(only one of race)")
     print("~~~~~~~~~~~~~~~")
     result = input(str()).lower
     if result == "human":
@@ -72,13 +72,14 @@ def leveling(player_expirience):
         print("You have new level")
         Player.level+=1
         Player.skill_point+=4
-        exp_for_new_level = exp_for_new_level*exp_for_new_level
+        exp_for_new_level += exp_for_new_level*exp_for_new_level
     else:
         return
         
 def uppgrade_stats(player_skill_point):
-    print("please choose you skill's\nnow you skill_point = {} write 1 if you whant add 1sp at strenght \n write 2 if you whant add 1sp at intelligence\n"+
-    +"write 3 if you whant add 1sp at agility \n ".format(Player.skill_point))
+    print("please choose you skill's\nnow you skill_point = {} write 1 if you whant add 1sp at strenght \n"
+          " write 2 if you whant add 1sp at intelligence\n"
+          "write 3 if you want add 1sp at agility \n ".format(Player.skill_point))
     i = int(input())
     while Player.skill_point>0:
         if i == 1:
