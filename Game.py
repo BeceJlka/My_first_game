@@ -1,7 +1,7 @@
 from random import *
 class Player():
     def __init__(self,name = None,level = 1, gold = 0, expirience = 0, skill_point = 0,
-                 race = None, max_health = 0,health = 0, strenght = 0, agility = 0, intelligence = 0):
+                 race = None, max_health = 10, health = 0, strenght = 0, agility = 0, intelligence = 0):
         self.level = level
         self.gold = gold
         self.expirience = expirience
@@ -13,6 +13,7 @@ class Player():
         self.agility = agility
         self.intelligence = intelligence
         self.race = race
+player = Player()         
 def elf():
         Player.max_health+=8
         Player.strenght+=2
@@ -27,18 +28,20 @@ def human():
         Player.intelligence+=2
         Player.race = "Human"      
 
-class Monster():
-    def __init__(self,level=randint(Player.level, Player.level+3), gold = randint(1, Player.gold),
-                 health = randint(Player.max_health, Player.heralth+30),
-                 strenght = randint(2, Player.strenght+5), agility = randint(2, Player.agility+5),
-                 intelligence =randint(2, Player.intelligence+5)):
-
+class Monster(): 
+    def __init__(self, level=randint(player.level, player.level+3),
+                 gold = randint(0, player.gold),
+                 health = randint(player.max_health, player.health+30),
+                 strenght = randint(2, player.strenght+5),
+                 agility = randint(2, player.agility+5),
+                 intelligence =randint(2, player.intelligence+5)):
         self.level = level
         self.gold = gold
         self.health = health
         self.strenght = strenght
         self.agility = agility
         self.intelligence = intelligence
+monster = Monster()
 
 
 
@@ -59,8 +62,6 @@ def game():
     elif result == "elf":
         elf()
 
-palyer = Player()
-monster = Monster()
 game()
 
 #def fight(monster,player):
